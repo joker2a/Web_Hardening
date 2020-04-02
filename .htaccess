@@ -1,4 +1,9 @@
 ############## Security headers ######################################
+# X-Powerred-By 
+<IfModule mod_headers.c>
+	Header always unset X-Powered-By
+	Header unset X-Powered-By
+</IfModule>
 
 #Cookie:
 <IfModule mod_headers.c>
