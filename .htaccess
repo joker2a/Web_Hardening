@@ -1,0 +1,41 @@
+############## Security headers ######################################
+
+#Cookie:
+<IfModule mod_headers.c>
+	Header always edit Set-Cookie (.*) "__Host-sess=123; $1; HttpOnly; Samesite=Lax"
+</IfModule>
+
+# X-XSS-Protection
+<IfModule mod_headers.c>
+	Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# X-Frame-Options
+<IfModule mod_headers.c>
+	Header always append X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# X-Content-Type-Options
+<IfModule mod_headers.c>
+	Header set X-Content-Type-Options nosniff
+</IfModule>
+
+# Strict-Transport-Security
+<IfModule mod_headers.c>
+	Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+</IfModule>
+
+# Feature-Policy
+<IfModule mod_headers.c>
+	Header set Feature-Policy "geolocation 'self'; vibrate 'none'"
+</IfModule>
+
+# Content-Security-Policy 
+<IfModule mod_headers.c>
+	Header set Content-Security-Policy "default-src https:; font-src https: data:; img-src https: data:; script-src https:; style-src https:;"
+</IfModule>
+
+# Referrer-Policy 
+<IfModule mod_headers.c>
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
